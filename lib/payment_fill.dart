@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:resort_appointment/add_card_screen.dart';
 import 'package:resort_appointment/Appointment/appointment_screen.dart';
+import 'package:resort_appointment/payment_screen.dart';
 
 /// This screen represents a filled payment screen with a dummy card ("MasterCard") and a done button.
 class PaymentFill extends StatefulWidget {
@@ -126,62 +127,15 @@ class _PaymentFillState extends State<PaymentFill> {
       ),
 
       // Bottom "Done" button
-      bottomNavigationBar: const ConfirmAndPay(),
-    );
-  }
-}
-
-/// Bottom navigation widget with "Done" button that navigates to AppointmentScreen
-class ConfirmAndPay extends StatelessWidget {
-  const ConfirmAndPay({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: 112,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(8.0),
-      ),
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8),
-            child: GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const AppointmentScreen(),
-                  ),
-                );
-              },
-              child: Container(
-                width: 350,
-                height: 60,
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                child: const Center(
-                  child: Text(
-                    'Done',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ],
+      bottomNavigationBar: const ConfirmAndPay(
+        txt: 'Done',
+        txtcolor: Colors.white,
+        containerColor: Colors.blue,
       ),
     );
   }
 }
+
 
 /// Displays a sample MasterCard entry with masked card number
 Widget MasterCard() {

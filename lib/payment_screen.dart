@@ -130,38 +130,47 @@ class _PaymentScreenState extends State<PaymentScreen> {
 }
 
 /// Bottom bar widget with "Confirm and Pay" button
-Widget ConfirmAndPay() {
-  return Container(
-    width: double.infinity,
-    height: 112,
-    decoration: BoxDecoration(
-      color: Colors.white,
-      borderRadius: BorderRadius.circular(8.0),
-    ),
-    child: Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8),
-          child: Container(
-            width: 350,
+class ConfirmAndPay extends StatelessWidget {
+  final String? txt;
+  final Color? txtcolor, containerColor;
+  const ConfirmAndPay({
+    super.key,
+    this.txt,
+    this.txtcolor,
+    this.containerColor,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 112,
+      padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 8),
+
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(8.0),
+      ),
+      child: Column(
+        children: [
+          Container(
             height: 60,
             decoration: BoxDecoration(
-              color: Color(0xfff7f7f7),
+              color: containerColor ?? Color(0xfff7f7f7),
               borderRadius: BorderRadius.circular(16),
             ),
-            child: const Center(
+            child: Center(
               child: Text(
-                'Confirm and Pay',
+                txt ?? 'Confirm and Pay',
                 style: TextStyle(
-                  color: Color(0xffbdbdbd),
+                  color: txtcolor ?? Color(0xffbdbdbd),
                   fontWeight: FontWeight.w600,
                   fontSize: 16,
                 ),
               ),
             ),
           ),
-        ),
-      ],
-    ),
-  );
+        ],
+      ),
+    );
+  }
 }
